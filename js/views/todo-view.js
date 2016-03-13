@@ -19,6 +19,7 @@ var app = app || {};
 		events: {
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
+			'click .edit-btn': 'edit',
 			'click .destroy': 'clear',
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
@@ -50,6 +51,10 @@ var app = app || {};
 
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
+			this.$title = this.$('#title');
+			// if(this.model.get('completed')){
+			// 	$(this.$title).after('<label> -- Done</label>');
+			// }
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			return this;
